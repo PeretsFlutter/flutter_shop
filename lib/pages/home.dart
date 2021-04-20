@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-//Test
-
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,7 +17,14 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             children: <Widget>[
               Container(
-                child: ListTile(),
+                child: ListTile(
+                  title: Text(
+                    'Освіжаючі напої',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text('Більше 100 видів напоїв'),
+                  trailing: Icon(Icons.drafts),
+                ),
               ),
             ],
           ),
