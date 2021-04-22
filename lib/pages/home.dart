@@ -22,14 +22,28 @@ class HomePage extends StatelessWidget {
                     'Освіжаючі напої',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
-                  subtitle: Text('Більше 100 видів напоїв'),
+                  subtitle: Text(
+                    'Більше 100 видів напоїв',
+                    style: TextStyle(fontSize: 16),
+                  ),
                   trailing: Icon(Icons.drafts),
                 ),
               ),
+              Container(
+                child: Text('dfjghkdhkg'),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text('sdfhkjdshkf'),
+              ),
+              Container(
+                child: Text('dfgjdfghd'),
+              )
             ],
           ),
         ),
       ),
+      //Bottom
     );
   }
 }
