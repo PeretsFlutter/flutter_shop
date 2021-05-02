@@ -33,5 +33,60 @@ class CartDataProvider with ChangeNotifier {
     return total;
   }
 
-  void addItem({productId, price, title, imgUrl}) {}
+  void addItem({productId, price, title, imgUrl}) {
+    if (_cartItems.containsKey(productId)) {
+      _cartItems.update(
+          productId,
+          (ex) => Cart(
+              id: ex.id,
+              title: ex.title,
+              price: ex.price,
+              imgUrl: ex.imgUrl,
+              number: ex.number + 1));
+    } else {
+      _cartItems.putIfAbsent(
+          productId,
+          () => Cart(
+              id: '${DateTime.now()}',
+              title: title,
+              price: price,
+              imgUrl: imgUrl,
+              number: 1));
+    }
+    notifyListeners();
+  }
+
+  void deleteItem(String productId) {
+    _cartItems.remove(productId);
+    notifyListeners();
+  }
+
+  void updateItemsAddOne(String productId) {
+    _cartItems.update(
+        productId,
+        (ex) => Cart(
+            id: ex.id,
+            title: ex.title,
+            price: ex.price,
+            imgUrl: ex.imgUrl,
+            number: ex.number + 1));
+    notifyListeners();
+  }
+
+  void updateItemsSubOne(String productId) {
+    _cartItems.update(
+        productId,
+        (ex) => Cart(
+            id: ex.id,
+            title: ex.title,
+            price: ex.price,
+            imgUrl: ex.imgUrl,
+            number: ex.number - 1));
+    notifyListeners();
+  }
+
+  void clear() {
+    _cartItems = {};
+    notifyListeners();
+  }
 }
