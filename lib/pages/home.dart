@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shop/models/product.dart';
+import 'package:flutter_shop/widgets/item_card.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final productData = Provider.of<ProductDataProvider>(context);
+
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -19,18 +24,28 @@ class HomePage extends StatelessWidget {
               Container(
                 child: ListTile(
                   title: Text(
-                    'Освіжаючі напої',
+                    'Суші та роли на всі смаки',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
-                    'Більше 100 видів напоїв',
+                    'Більше 100 видів ролів',
                     style: TextStyle(fontSize: 16),
                   ),
                   trailing: Icon(Icons.drafts),
                 ),
               ),
               Container(
-                child: Text('dfjghkdhkg'),
+                padding: const EdgeInsets.all(5.0),
+                height: 290,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: productData.items.length,
+                  itemBuilder: (context, int index) =>
+                      ChangeNotifierProvider.value(
+                    value: productData.items[index],
+                    child: ItemCard(),
+                  ),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
